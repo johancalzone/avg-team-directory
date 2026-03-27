@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agria Vet Guide — Team Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#1A6FAF; --blue-dark:#0f4f80; --blue-light:#e8f2fa;
+  --red:#D7202A; --beige:#F5F0E8; --beige-dark:#ede6d8;
+  --tan:#C4A882; --dog-blue:#7AAAC8; --teal:#7AADA8;
+  --text:#1a2c3d; --text-light:#5a7080; --white:#ffffff;
+  --shadow:0 4px 24px rgba(26,111,175,0.10);
+  --shadow-hover:0 12px 40px rgba(26,111,175,0.18);
+  --radius:16px; --gold:#C8952A; --gold-light:#fdf3e0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--beige);color:var(--text);min-height:100vh;}
+
+/* ── HEADER ── */
+header{background:var(--blue);padding:16px 40px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(0,0,0,0.12);position:sticky;top:0;z-index:200;}
+.logo-mark{display:flex;flex-direction:column;align-items:flex-start;gap:1px;cursor:pointer;}
+.logo-abbr{font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:white;line-height:1;letter-spacing:-0.02em;}
+.logo-sub{color:rgba(255,255,255,0.62);font-size:0.68rem;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.logged-in-badge{background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.24);color:rgba(255,255,255,0.85);padding:5px 12px;border-radius:20px;font-size:0.77rem;font-weight:500;display:none;align-items:center;gap:7px;}
+.role-chip{padding:2px 8px;border-radius:10px;font-size:0.69rem;font-weight:700;letter-spacing:0.03em;}
+.role-chip.super{background:var(--gold);color:white;}
+.role-chip.market{background:var(--dog-blue);color:white;}
+.btn-header{background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);color:white;padding:8px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+.btn-header:hover{background:rgba(255,255,255,0.24);}
+
+/* ── NAV TABS ── */
+.page-nav{background:var(--blue-dark);display:flex;align-items:center;gap:0;padding:0 16px;overflow-x:auto;scrollbar-width:none;}
+.page-nav::-webkit-scrollbar{display:none;}
+.page-tab{padding:12px 20px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;transition:all 0.2s;letter-spacing:0.01em;white-space:nowrap;flex-shrink:0;}
+.page-tab:hover{color:white;}
+.page-tab.active{color:white;border-bottom-color:white;font-weight:600;}
+
+/* ── PAGES ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ════════════════════════════════
+   HOME PAGE
+════════════════════════════════ */
+.home-wrap{max-width:1200px;margin:0 auto;padding:28px 40px 60px;}
+
+/* Hero */
+.home-hero{text-align:center;margin-bottom:24px;}
+.home-hero h1{font-family:'Lora',serif;font-size:2.1rem;font-weight:700;color:var(--blue-dark);margin-bottom:0;}
+
+/* Stats row */
+.stats-row{display:flex;justify-content:center;gap:20px;margin-bottom:32px;flex-wrap:wrap;}
+.stat-card{background:white;border-radius:14px;padding:18px 28px;text-align:center;box-shadow:var(--shadow);min-width:110px;}
+.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--blue);line-height:1;}
+.stat-label{font-size:0.75rem;color:var(--text-light);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;}
+
+/* Two-col layout */
+.home-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;}
+@media(max-width:900px){.home-cols{grid-template-columns:1fr;}}
+
+.spotlight-card{background:white;border-radius:20px;padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+.spotlight-card h2{font-family:'Lora',serif;font-size:1.1rem;color:var(--blue-dark);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.spotlight-inner{display:flex;gap:18px;align-items:flex-start;flex:1;}
+.spotlight-avatar{width:80px;height:80px;border-radius:50%;background:var(--beige-dark);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;color:var(--text-light);overflow:hidden;flex-shrink:0;border:3px solid var(--beige-dark);}
+.spotlight-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.spotlight-info{flex:1;min-width:0;display:flex;flex-direction:column;}
+.spotlight-name{font-family:'Lora',serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.spotlight-title{font-size:0.78rem;color:var(--blue);font-weight:600;margin-bottom:4px;}
+.spotlight-market{font-size:0.73rem;color:var(--text-light);margin-bottom:10px;}
+.spotlight-desc{font-size:0.83rem;color:var(--text-light);line-height:1.6;font-weight:300;flex:1;}
+.spotlight-footer{margin-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;flex-shrink:0;}
+.btn-next-spotlight{background:var(--blue-light);color:var(--blue);border:none;padding:7px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-next-spotlight:hover{background:var(--blue);color:white;}
+.pinned-chip{background:var(--gold-light);color:var(--gold);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:0.03em;}
+
+/* New joiners */
+.new-joiners-card{background:white;border-radius:20px;padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+.new-joiners-card h2{font-family:'Lora',serif;font-size:1.1rem;color:var(--blue-dark);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.no-new{text-align:center;color:var(--text-light);font-size:0.85rem;padding:16px 0;opacity:0.7;}
+
+/* ════════════════════════════════
+   MARKET PAGE
+════════════════════════════════ */
+.dir-wrap{padding:28px 40px 60px;max-width:1400px;margin:0 auto;}
+.team-count{background:var(--blue);color:white;padding:7px 16px;border-radius:20px;font-size:0.83rem;font-weight:500;white-space:nowrap;margin-bottom:20px;display:inline-block;}
+
+/* MARKET PAGE HEADER ROW */
+.market-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:12px;}
+.market-header-left{flex-shrink:0;}
+
+/* Search — compact, top right, always inline */
+.search-wrap{position:relative;flex-shrink:0;}
+.search-input{padding:7px 26px 7px 30px;border:1.5px solid var(--beige-dark);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.8rem;outline:none;background:white;color:var(--text);transition:border-color 0.2s,width 0.2s;width:130px;}
+.search-input:focus{border-color:var(--blue);width:170px;}
+@media(max-width:480px){.search-input{width:110px;}.search-input:focus{width:140px;}}
+.search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:0.75rem;pointer-events:none;opacity:0.4;}
+.search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:0.75rem;opacity:0.45;display:none;line-height:1;padding:0;}
+.search-clear.visible{display:block;}
+
+/* MARKET TABS */
+.tabs-wrapper{display:flex;gap:0;margin-bottom:32px;background:var(--beige-dark);border-radius:12px;padding:4px;overflow-x:auto;scrollbar-width:none;}
+.tabs-wrapper::-webkit-scrollbar{display:none;}
+.tab{padding:9px 18px;border-radius:9px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;color:var(--text-light);cursor:pointer;white-space:nowrap;transition:all 0.2s;}
+.tab:hover{color:var(--blue);}
+.tab.active{background:var(--white);color:var(--blue);box-shadow:0 2px 8px rgba(26,111,175,0.12);font-weight:600;}
+.market-section{display:none;}
+.market-section.active{display:block;}
+
+/* TIER */
+.tier{margin-bottom:44px;}
+.tier-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.tier-badge{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;}
+.tier-badge.head{background:var(--blue);color:white;}
+.tier-badge.vet{background:var(--beige-dark);color:var(--text-light);border:1px solid #d0c8bc;}
+.tier-line{flex:1;height:1px;background:linear-gradient(to right,var(--beige-dark),transparent);}
+.tier-connector{display:flex;justify-content:center;margin-bottom:8px;}
+.tier-connector-line{width:2px;height:24px;background:linear-gradient(to bottom,var(--dog-blue),var(--beige-dark));border-radius:2px;}
+
+/* FLIP CARDS */
+.cards-grid{display:flex;flex-wrap:wrap;gap:22px;}
+.card-wrap{width:210px;height:290px;perspective:1000px;cursor:pointer;position:relative;}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(0.4,0.2,0.2,1);}
+.card-wrap:hover .card-inner,.card-wrap.flipped .card-inner{transform:rotateY(180deg);}
+.card-front,.card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);overflow:hidden;}
+.card-front{background:var(--white);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;padding:26px 18px 18px;transition:box-shadow 0.3s;}
+.card-wrap:hover .card-front{box-shadow:var(--shadow-hover);}
+.head-tier .card-front{border-top:4px solid var(--blue);}
+.vet-tier  .card-front{border-top:4px solid var(--dog-blue);}
+.card-avatar{width:86px;height:86px;border-radius:50%;border:3px solid var(--beige-dark);margin-bottom:14px;background:var(--beige-dark);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;color:var(--text-light);overflow:hidden;flex-shrink:0;}
+.card-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+.card-name{font-family:'Lora',serif;font-size:0.97rem;font-weight:600;text-align:center;color:var(--text);line-height:1.3;margin-bottom:5px;}
+.card-title{font-size:0.75rem;font-weight:500;color:var(--blue);text-align:center;letter-spacing:0.02em;margin-bottom:8px;}
+.card-market-tag{font-size:0.7rem;color:var(--text-light);background:var(--beige);padding:3px 10px;border-radius:20px;margin-top:auto;}
+.card-hint{font-size:0.66rem;color:var(--text-light);margin-top:7px;opacity:0.55;}
+.new-joiner-card-badge{position:absolute;top:10px;right:10px;background:var(--teal);color:white;font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:0.04em;z-index:2;transform:rotateY(0deg);}
+.card-back{transform:rotateY(180deg);display:flex;flex-direction:column;padding:22px 18px;box-shadow:var(--shadow-hover);}
+.head-tier .card-back{background:linear-gradient(145deg,#0d4572,#1A6FAF);}
+.vet-tier  .card-back{background:linear-gradient(145deg,#5089a6,#7AAAC8);}
+.back-name{font-family:'Lora',serif;font-size:0.93rem;font-weight:700;color:white;margin-bottom:3px;}
+.back-title{font-size:0.7rem;color:rgba(255,255,255,0.68);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,0.18);}
+.back-desc{font-size:0.8rem;color:rgba(255,255,255,0.88);line-height:1.62;font-weight:300;flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.3) transparent;}
+.back-desc::-webkit-scrollbar{width:4px;}
+.back-desc::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:4px;}
+.back-market{margin-top:13px;font-size:0.7rem;color:rgba(255,255,255,0.48);}
+.empty-state{text-align:center;padding:52px 20px;color:var(--text-light);}
+.empty-state .icon{font-size:2.6rem;margin-bottom:10px;}
+
+/* ════════════════════════════════
+   OVERLAYS / MODALS
+════════════════════════════════ */
+.overlay{display:none;position:fixed;inset:0;background:rgba(10,25,40,0.55);backdrop-filter:blur(5px);z-index:1000;align-items:center;justify-content:center;padding:16px;}
+.overlay.open{display:flex;}
+
+/* LOGIN */
+.login-modal{background:var(--white);border-radius:20px;padding:40px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.22);text-align:center;}
+.login-modal .modal-icon{font-size:2.4rem;margin-bottom:10px;}
+.login-modal h2{font-family:'Lora',serif;font-size:1.35rem;color:var(--blue-dark);margin-bottom:5px;}
+.login-modal .sub{color:var(--text-light);font-size:0.85rem;margin-bottom:22px;}
+.field-label{font-size:0.73rem;font-weight:700;color:var(--text-light);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:5px;text-align:left;}
+.login-input{width:100%;padding:11px 14px;border:1.5px solid var(--beige-dark);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.92rem;outline:none;transition:border 0.2s;margin-bottom:13px;background:var(--beige);color:var(--text);}
+.login-input:focus{border-color:var(--blue);background:white;}
+.login-error{color:var(--red);font-size:0.8rem;margin-bottom:10px;min-height:18px;}
+
+/* ADMIN MODAL */
+.admin-modal{background:var(--beige);border-radius:20px;width:100%;max-width:900px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.22);overflow:hidden;}
+.admin-header{background:var(--blue);padding:18px 26px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-header h2{font-family:'Lora',serif;color:white;font-size:1.15rem;}
+.admin-header .sub{color:rgba(255,255,255,0.65);font-size:0.78rem;margin-top:2px;}
+.admin-header-right{display:flex;align-items:center;gap:10px;}
+.super-badge{background:var(--gold);color:white;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;}
+.market-badge-pill{background:var(--dog-blue);color:white;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:700;}
+.btn-close{background:rgba(255,255,255,0.18);border:none;color:white;width:30px;height:30px;border-radius:7px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.btn-close:hover{background:rgba(255,255,255,0.3);}
+.admin-body{padding:24px;overflow-y:auto;flex:1;}
+.admin-tabs{display:flex;gap:0;background:var(--beige-dark);border-radius:10px;padding:3px;margin-bottom:22px;overflow-x:auto;scrollbar-width:none;}
+.admin-tabs::-webkit-scrollbar{display:none;}
+.admin-tab{padding:8px 15px;border-radius:8px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:500;color:var(--text-light);cursor:pointer;white-space:nowrap;transition:all 0.2s;}
+.admin-tab.active{background:white;color:var(--blue);box-shadow:0 1px 5px rgba(0,0,0,0.08);font-weight:600;}
+
+/* ROWS */
+.person-list,.manager-list{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.row-card{background:white;border-radius:12px;padding:12px 15px;display:flex;align-items:center;gap:13px;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+.row-avatar{width:40px;height:40px;border-radius:50%;background:var(--beige-dark);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:var(--text-light);overflow:hidden;flex-shrink:0;}
+.row-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.row-icon{font-size:1.3rem;flex-shrink:0;}
+.row-info{flex:1;min-width:0;}
+.row-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+.row-meta{font-size:0.76rem;color:var(--text-light);margin-top:1px;}
+.row-actions{display:flex;gap:6px;flex-shrink:0;}
+
+/* BUTTONS */
+.btn-edit{padding:5px 11px;border-radius:7px;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;background:var(--blue-light);color:var(--blue);transition:all 0.15s;}
+.btn-edit:hover{background:var(--blue);color:white;}
+.btn-delete{padding:5px 11px;border-radius:7px;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;background:#fde8e9;color:var(--red);transition:all 0.15s;}
+.btn-delete:hover{background:var(--red);color:white;}
+.btn-add{background:var(--blue);color:white;border:none;padding:10px 18px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;}
+.btn-add:hover{background:var(--blue-dark);}
+.btn-primary{background:var(--blue);color:white;border:none;padding:11px 26px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:background 0.2s;width:100%;margin-top:4px;}
+.btn-primary:hover{background:var(--blue-dark);}
+.btn-save{background:var(--blue);color:white;border:none;padding:10px 22px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.86rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.btn-save:hover{background:var(--blue-dark);}
+.btn-cancel{background:var(--beige-dark);color:var(--text-light);border:none;padding:10px 16px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.86rem;cursor:pointer;}
+.btn-cancel:hover{background:#d0c8b8;}
+
+/* SECTION TITLES */
+.section-title{font-family:'Lora',serif;font-size:0.95rem;color:var(--blue-dark);font-weight:600;margin:18px 0 10px;display:flex;align-items:center;gap:8px;}
+.section-title:first-child{margin-top:0;}
+.s-badge{font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:0.05em;}
+.s-badge.head{background:var(--blue);color:white;}
+.s-badge.vet{background:var(--beige-dark);color:var(--text-light);border:1px solid #d0c8bc;}
+
+/* FORMS */
+.inline-form{background:white;border-radius:14px;padding:20px;margin-top:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.form-field{display:flex;flex-direction:column;gap:4px;}
+.form-field.full{grid-column:1/-1;}
+.form-field label{font-size:0.73rem;font-weight:700;color:var(--text-light);letter-spacing:0.05em;text-transform:uppercase;}
+.form-field input,.form-field select,.form-field textarea{padding:9px 12px;border:1.5px solid var(--beige-dark);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.86rem;outline:none;transition:border 0.2s;background:var(--beige);color:var(--text);}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--blue);background:white;}
+.form-field textarea{resize:vertical;min-height:76px;}
+.form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:6px;}
+.input-row{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+.input-row input,.input-row select{flex:1;min-width:110px;padding:9px 12px;border:1.5px solid var(--beige-dark);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.86rem;outline:none;background:var(--beige);color:var(--text);transition:border 0.2s;}
+.input-row input:focus,.input-row select:focus{border-color:var(--blue);background:white;}
+
+/* PHOTO UPLOAD */
+.photo-upload-area{display:flex;align-items:center;gap:16px;margin-bottom:18px;padding:16px;background:var(--beige);border-radius:12px;}
+.photo-preview{width:76px;height:76px;border-radius:50%;background:var(--beige-dark);border:3px solid var(--beige-dark);display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden;flex-shrink:0;cursor:pointer;position:relative;transition:border-color 0.2s;}
+.photo-preview:hover{border-color:var(--blue);}
+.photo-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+.photo-preview .cam-overlay{position:absolute;inset:0;border-radius:50%;background:rgba(26,111,175,0.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;font-size:1.3rem;}
+.photo-preview:hover .cam-overlay{opacity:1;}
+.photo-upload-info{flex:1;}
+.photo-upload-info .up-label{font-size:0.75rem;font-weight:700;color:var(--text-light);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;}
+.btn-upload{background:var(--blue-light);color:var(--blue);border:none;padding:8px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all 0.2s;}
+.btn-upload:hover{background:var(--blue);color:white;}
+.btn-remove-photo{background:#fde8e9;color:var(--red);border:none;padding:8px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;margin-left:6px;display:none;}
+.up-hint{font-size:0.72rem;color:var(--text-light);margin-top:5px;}
+
+/* CROP */
+.crop-overlay{z-index:1100;}
+.crop-modal{background:white;border-radius:18px;padding:28px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.25);text-align:center;}
+.crop-modal h3{font-family:'Lora',serif;font-size:1.1rem;color:var(--blue-dark);margin-bottom:6px;}
+.crop-modal p{color:var(--text-light);font-size:0.8rem;margin-bottom:16px;}
+.crop-circle-wrapper{width:240px;height:240px;border-radius:50%;overflow:hidden;margin:0 auto 16px;border:3px solid var(--beige-dark);background:var(--beige);position:relative;cursor:move;touch-action:none;}
+#crop-canvas{display:block;}
+.crop-zoom-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.crop-zoom-row label{font-size:0.78rem;color:var(--text-light);font-weight:600;white-space:nowrap;}
+.crop-zoom-row input{flex:1;accent-color:var(--blue);}
+.crop-actions{display:flex;gap:10px;justify-content:center;}
+
+/* INFO */
+.info-box{background:var(--blue-light);border-radius:10px;padding:12px 16px;font-size:0.8rem;color:var(--blue);margin-top:12px;line-height:1.5;}
+.gold-box{background:var(--gold-light);border-radius:10px;padding:12px 16px;font-size:0.8rem;color:#7a5a10;margin-top:10px;line-height:1.5;}
+.form-modal{background:var(--beige);border-radius:20px;width:100%;max-width:540px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.22);overflow:hidden;}
+
+@media(max-width:700px){
+  header{padding:12px 16px;}
+  .page-nav{padding:0 8px;}
+  .page-tab{padding:10px 14px;font-size:0.8rem;}
+  .home-wrap,.dir-wrap{padding:20px 16px 40px;}
+  .home-hero h1{font-size:1.7rem;}
+  .home-cols{grid-template-columns:1fr;}
+  .card-wrap{width:155px;height:230px;}
+  .form-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark" onclick="showPage('home')">
+    <span class="logo-abbr">AVG</span>
+    <span class="logo-sub">Team Directory</span>
+  </div>
+  <div class="header-right">
+    <div class="logged-in-badge" id="logged-in-badge">
+      <span id="li-name"></span>
+      <span class="role-chip" id="li-chip"></span>
+    </div>
+    <button class="btn-header" id="admin-btn" onclick="handleAdminBtn()">⚙️ Admin</button>
+    <button class="btn-header" id="logout-btn" onclick="doLogout()" style="display:none">Sign out</button>
+  </div>
+</header>
+
+<nav class="page-nav" id="page-nav">
+  <button class="page-tab active" id="nav-home" onclick="showPage('home')">🏠 Home</button>
+</nav>
+
+<!-- ═══════════ HOME PAGE ═══════════ -->
+<div class="page active" id="page-home">
+  <div class="home-wrap">
+    <div class="home-hero">
+      <h1>Meet the Agria Vet Guide Team</h1>
+    </div>
+
+    <div class="stats-row" id="stats-row"></div>
+
+    <div class="home-cols" id="home-cols">
+      <!-- SPOTLIGHT -->
+      <div class="spotlight-card">
+        <h2>⭐ Team Spotlight</h2>
+        <div id="spotlight-content"></div>
+      </div>
+
+      <!-- NEW JOINERS — shown only when there are new members -->
+      <div class="new-joiners-card" id="new-joiners-card" style="display:none">
+        <h2>🌱 New This Month</h2>
+        <div id="new-joiners-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MARKET PAGES (generated dynamically) ═══════════ -->
+<div id="market-pages"></div>
+
+<!-- LOGIN -->
+<div class="overlay" id="login-overlay">
+  <div class="login-modal">
+    <div class="modal-icon">🔐</div>
+    <h2>Admin Sign In</h2>
+    <p class="sub">Enter your credentials to manage your team.</p>
+    <div class="field-label">Username</div>
+    <input class="login-input" type="text" id="li-username" placeholder="your.username" autocomplete="username" onkeydown="if(event.key==='Enter')attemptLogin()">
+    <div class="field-label">Password</div>
+    <input class="login-input" type="password" id="li-password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')attemptLogin()">
+    <div class="login-error" id="login-error"></div>
+    <button class="btn-primary" onclick="attemptLogin()">Sign In →</button>
+    <br><br>
+    <button style="background:none;border:none;color:var(--text-light);font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif" onclick="closeLogin()">Cancel</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="overlay" id="admin-overlay">
+  <div class="admin-modal">
+    <div class="admin-header">
+      <div><h2 id="ap-title">Admin Panel</h2><div class="sub" id="ap-sub"></div></div>
+      <div class="admin-header-right">
+        <span id="ap-badge"></span>
+        <button class="btn-close" onclick="closeAdmin()">✕</button>
+      </div>
+    </div>
+    <div class="admin-body">
+      <div class="admin-tabs" id="admin-tabs"></div>
+      <div id="admin-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PERSON FORM -->
+<div class="overlay" id="pf-overlay">
+  <div class="form-modal">
+    <div class="admin-header">
+      <div><h2 id="pf-title">Add Team Member</h2><div class="sub" id="pf-sub">Fill in the details</div></div>
+      <button class="btn-close" onclick="closePF()">✕</button>
+    </div>
+    <div class="admin-body" style="padding:22px">
+      <div class="photo-upload-area">
+        <div class="photo-preview" id="pf-photo-preview" onclick="document.getElementById('pf-file').click()">
+          <span id="pf-initials">🧑‍⚕️</span>
+          <div class="cam-overlay">📷</div>
+        </div>
+        <div class="photo-upload-info">
+          <div class="up-label">Profile Photo</div>
+          <button class="btn-upload" onclick="document.getElementById('pf-file').click()">📷 Upload Photo</button>
+          <button class="btn-remove-photo" id="btn-remove-photo" onclick="removePhoto()">✕ Remove</button>
+          <div class="up-hint">JPG or PNG · Max 15 MB<br>Drag &amp; zoom to crop after upload.</div>
+        </div>
+      </div>
+      <input type="file" id="pf-file" accept="image/*" style="display:none" onchange="handlePhotoSelect(event)">
+      <div class="form-grid">
+        <div class="form-field"><label>First Name *</label><input type="text" id="pf-fn" placeholder="Anna"></div>
+        <div class="form-field"><label>Last Name *</label><input type="text" id="pf-ln" placeholder="Svensson"></div>
+        <div class="form-field"><label>Job Title</label><input type="text" id="pf-jt" placeholder="Head Veterinarian"></div>
+        <div class="form-field"><label>Tier</label>
+          <select id="pf-tier">
+            <option value="head" selected>Head Veterinarian</option>
+            <option value="vet">Veterinarian</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Market</label><select id="pf-mkt"></select></div>
+        <div class="form-field full"><label>About (shown on card back)</label><textarea id="pf-desc" placeholder="Specialisation, fun fact, passion…"></textarea></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-cancel" onclick="closePF()">Cancel</button>
+        <button class="btn-save" onclick="savePerson()">💾 Save Member</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CROP -->
+<div class="overlay crop-overlay" id="crop-overlay">
+  <div class="crop-modal">
+    <h3>✂️ Crop Photo</h3>
+    <p>Drag to reposition · Slider to zoom</p>
+    <div class="crop-circle-wrapper" id="crop-wrapper">
+      <canvas id="crop-canvas" width="240" height="240"></canvas>
+    </div>
+    <div class="crop-zoom-row">
+      <label>Zoom</label>
+      <input type="range" id="crop-zoom" min="0.1" max="3" step="0.01" value="1" oninput="drawCrop()">
+    </div>
+    <div class="crop-actions">
+      <button class="btn-cancel" onclick="cancelCrop()">Cancel</button>
+      <button class="btn-save" onclick="confirmCrop()">✔ Use Photo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────
+//  CREDENTIALS
+// ─────────────────────────────────────
+const SUPER_USER = 'superadmin';
+const SUPER_PASS = 'AgriaSuperAdmin2024!';
+
+// ─────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────
+let S = JSON.parse(localStorage.getItem('agria_v6') || 'null') || {
+  markets: [
+    {id:'m5',name:'UK',     flag:'🇬🇧'},
+    {id:'m2',name:'Norway', flag:'🇳🇴'},
+    {id:'m3',name:'Denmark',flag:'🇩🇰'},
+    {id:'m4',name:'Finland',flag:'🇫🇮'},
+    {id:'m6',name:'Germany',flag:'🇩🇪'},
+    {id:'m7',name:'France', flag:'🇫🇷'},
+    {id:'m1',name:'Sweden', flag:'🇸🇪'},
+  ],
+  admins: [],
+  pinnedSpotlight: null,
+  people: []
+};
+
+let session = null;
+let editingId = null;
+let activeTab = null;
+let activeAdminTab = null;
+let pfAvatar = null;
+let pfAvatarIsNew = false;
+let spotlightIdx = 0;
+let newJoinerIdx = 0;
+let isSyncing = false;
+
+const GS_URL = 'https://script.google.com/macros/s/AKfycbzbdOJV3GXrMhKZcRdqcPraI9wNPxfCQvllGK0cHo348JgQVulFoZUZpOcVhXT6yOAD/exec';
+
+// Use JSONP for both reads and writes - the only method that reliably
+// works cross-origin from GitHub Pages to Apps Script
+// ─────────────────────────────────────
+//  BACKEND COMMUNICATION
+//  Reads via JSONP, writes via fetch POST text/plain
+// ─────────────────────────────────────
+
+function gsRead(){
+  return new Promise((resolve, reject) => {
+    const cb = 'gs_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    const s = document.createElement('script');
+    let done = false;
+    const timer = setTimeout(()=>{
+      if(done) return; done=true;
+      delete window[cb]; s.remove();
+      reject(new Error('Read timeout'));
+    }, 30000);
+    window[cb] = (data)=>{
+      if(done) return; done=true;
+      delete window[cb]; s.remove();
+      clearTimeout(timer); resolve(data);
+    };
+    s.onerror = ()=>{ if(done) return; done=true; delete window[cb]; clearTimeout(timer); reject(new Error('Script error')); };
+    s.src = GS_URL + '?action=getData&callback=' + cb + '&t=' + Date.now();
+    document.head.appendChild(s);
+  });
+}
+
+async function gsWrite(payload){
+  const resp = await fetch(GS_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  });
+  const text = await resp.text();
+  try { return JSON.parse(text); } catch(e) { return { ok: true }; }
+}
+
+async function gsGet(){ return gsRead(); }
+async function gsPost(payload){ return gsWrite(payload); }
+
+async function gsPhotoUpload(personId, imageData){
+  const result = await gsWrite({ action: 'uploadPhoto', personId, imageData });
+  if(result && result.url) return result;
+  throw new Error(result ? (result.error || 'No URL returned') : 'Upload failed');
+}
+
+function showSyncStatus(msg, isError){
+  let el = document.getElementById('sync-status');
+  if(!el){ el=document.createElement('div'); el.id='sync-status';
+    el.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a2c3d;color:white;padding:8px 18px;border-radius:20px;font-size:0.8rem;font-family:"DM Sans",sans-serif;font-weight:500;z-index:9999;transition:opacity 0.4s;pointer-events:none;';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.background = isError ? '#D7202A' : '#1a2c3d';
+  el.style.opacity = '1';
+  clearTimeout(el._t);
+  if(!isError) el._t = setTimeout(()=>{ el.style.opacity='0'; }, 2500);
+}
+
+async function save(){
+  localStorage.setItem('agria_v6', JSON.stringify(S));
+  if(isSyncing) return;
+  isSyncing = true;
+  showSyncStatus('💾 Saving…');
+  try {
+    const result = await gsWrite({ action: 'saveData', data: S });
+    if(result && (result.ok || result.people)){
+      localStorage.setItem('agria_last_fetch', Date.now().toString());
+      showSyncStatus('✓ Saved & synced');
+    } else {
+      throw new Error(result ? result.error : 'Unknown error');
+    }
+  } catch(e) {
+    console.warn('Save failed:', e);
+    showSyncStatus('⚠️ Saved locally — sync failed', true);
+  } finally {
+    isSyncing = false;
+  }
+}
+
+async function loadFromSheets(force=false){
+  const CACHE_TTL = 5 * 60 * 1000;
+  const lastFetch = parseInt(localStorage.getItem('agria_last_fetch') || '0');
+  const age = Date.now() - lastFetch;
+  if(!force && age < CACHE_TTL && S.people && S.people.length > 0){
+    showSyncStatus('✓ Up to date');
+    setTimeout(()=>{ const el=document.getElementById('sync-status'); if(el) el.style.opacity='0'; }, 1500);
+    return;
+  }
+  showSyncStatus('⟳ Syncing…');
+  try {
+    const remote = await gsGet();
+    if(remote && remote.markets){
+      // Merge: take remote as base but keep any local people
+      // that are newer than last fetch (i.e. just saved but not yet in sheet)
+      if(remote.people){
+        // For each local person, if they're not in remote, keep them
+        // This prevents freshly saved people from disappearing
+        const remotePeopleIds = new Set(remote.people.map(p => p.id));
+        const localOnly = S.people.filter(p => !remotePeopleIds.has(p.id));
+        remote.people = [...remote.people, ...localOnly];
+      }
+      S = remote;
+      localStorage.setItem('agria_v6', JSON.stringify(S));
+      localStorage.setItem('agria_last_fetch', Date.now().toString());
+      showSyncStatus('✓ Up to date');
+    } else {
+      // Sheet is empty or new — push local state up
+      await save();
+    }
+  } catch(e) {
+    console.warn('Load failed:', e);
+    showSyncStatus('⚠️ Offline — showing local data', true);
+  }
+}
+
+// ─────────────────────────────────────
+//  PAGE NAV — Home + per-market pages
+// ─────────────────────────────────────
+function buildNav(){
+  const nav = document.getElementById('page-nav');
+  nav.innerHTML = '<button class="page-tab" id="nav-home" onclick="showPage(\'home\')">🏠 Home</button>';
+  S.markets.forEach(m => {
+    const btn = document.createElement('button');
+    btn.className = 'page-tab';
+    btn.id = 'nav-' + m.id;
+    btn.textContent = m.flag + ' ' + m.name;
+    btn.onclick = () => showPage(m.id);
+    nav.appendChild(btn);
+  });
+}
+
+function showPage(page){
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.page-tab').forEach(t=>t.classList.remove('active'));
+
+  if(page === 'home'){
+    document.getElementById('page-home').classList.add('active');
+    const tab = document.getElementById('nav-home');
+    if(tab) tab.classList.add('active');
+    renderHome();
+    loadFromSheets().then(()=>{ renderHome(); buildNav(); });
+  } else {
+    // Market page
+    const pageEl = document.getElementById('page-mkt-' + page);
+    if(pageEl){
+      pageEl.classList.add('active');
+      const tab = document.getElementById('nav-' + page);
+      if(tab) tab.classList.add('active');
+    }
+    loadFromSheets().then(()=>{ buildNav(); renderMarketPage(page); const t=document.getElementById('nav-'+page); if(t)t.classList.add('active'); });
+  }
+  activeTab = page;
+}
+
+// ─────────────────────────────────────
+//  HOME
+// ─────────────────────────────────────
+function renderHome(){
+  renderStats();
+  renderSpotlight();
+  renderNewJoiners();
+}
+
+function renderStats(){
+  const el = document.getElementById('stats-row');
+  const newCount = S.people.filter(p=> Date.now()-p.added < 30*86400000).length;
+  el.innerHTML = `
+    <div class="stat-card"><div class="stat-num">${S.people.length}</div><div class="stat-label">Team Members</div></div>
+    <div class="stat-card"><div class="stat-num">${S.markets.length}</div><div class="stat-label">Markets</div></div>
+    <div class="stat-card"><div class="stat-num">${S.people.filter(p=>p.tier==='head').length}</div><div class="stat-label">Head Vets</div></div>
+    <div class="stat-card" style="position:relative"><div class="stat-num" style="color:var(--teal)">${newCount}</div><div class="stat-label">New This Month</div></div>
+  `;
+}
+
+function renderSpotlight(){
+  const el = document.getElementById('spotlight-content');
+  const candidates = S.people.filter(p=>p.desc);
+  if(!candidates.length){ el.innerHTML='<p style="color:var(--text-light);font-size:0.85rem">No team members yet.</p>'; return; }
+
+  let person;
+  if(S.pinnedSpotlight){
+    person = S.people.find(p=>p.id===S.pinnedSpotlight);
+  }
+  if(!person){
+    person = candidates[spotlightIdx % candidates.length];
+  }
+
+  const market = S.markets.find(m=>m.id===person.mkt);
+  const av = person.av ? `<img src="${person.av}" alt="">` : (person.fn[0]+person.ln[0]);
+  const isPinned = S.pinnedSpotlight === person.id;
+  const isNew = Date.now()-person.added < 30*86400000;
+
+  el.innerHTML = `
+    <div class="spotlight-inner">
+      <div class="spotlight-avatar">${av}</div>
+      <div class="spotlight-info">
+        <div class="spotlight-name">${person.fn} ${person.ln}${isNew?' <span style="background:var(--teal);color:white;font-size:0.65rem;font-weight:700;padding:2px 7px;border-radius:8px;vertical-align:middle;margin-left:4px">NEW</span>':''}</div>
+        <div class="spotlight-title">${person.jt}</div>
+        <div class="spotlight-market">${market ? market.flag+' '+market.name : ''}</div>
+        <div class="spotlight-desc">${person.desc}</div>
+      </div>
+    </div>
+    <div class="spotlight-footer">
+      ${isPinned ? '<span class="pinned-chip">📌 Pinned</span>' : '<span></span>'}
+      ${!S.pinnedSpotlight ? '<button class="btn-next-spotlight" onclick="nextSpotlight()">Next →</button>' : ''}
+    </div>`;
+}
+
+function nextSpotlight(){
+  const candidates = S.people.filter(p=>p.desc);
+  spotlightIdx = (spotlightIdx + 1) % candidates.length;
+  renderSpotlight();
+}
+
+function renderNewJoiners(){
+  const el = document.getElementById('new-joiners-content');
+  const card = document.getElementById('new-joiners-card');
+  const homeCols = document.getElementById('home-cols');
+  const cutoff = Date.now() - 30*86400000;
+  const newOnes = S.people.filter(p=> Number(p.added) > cutoff).sort((a,b)=>Number(b.added)-Number(a.added));
+
+  if(!newOnes.length){
+    // Hide the card entirely and make spotlight full-width
+    card.style.display='none';
+    homeCols.style.gridTemplateColumns='1fr';
+    return;
+  }
+
+  card.style.display='flex';
+  homeCols.style.gridTemplateColumns='';
+
+  const p = newOnes[newJoinerIdx % newOnes.length];
+  const market = S.markets.find(m=>m.id===p.mkt);
+  const av = p.av ? `<img src="${p.av}" alt="">` : (p.fn[0]+p.ln[0]);
+  const daysAgo = Math.floor((Date.now()-Number(p.added))/86400000);
+  const when = daysAgo===0?'Joined today':daysAgo===1?'Joined yesterday':`Joined ${daysAgo}d ago`;
+
+  el.innerHTML = `
+    <div class="spotlight-inner">
+      <div class="spotlight-avatar">${av}</div>
+      <div class="spotlight-info">
+        <div class="spotlight-name">${p.fn} ${p.ln}</div>
+        <div class="spotlight-title">${p.jt}</div>
+        <div class="spotlight-market">${market ? market.flag+' '+market.name : ''}</div>
+        <div class="spotlight-desc">${p.desc || 'Welcome to the team!'}</div>
+      </div>
+    </div>
+    <div class="spotlight-footer">
+      <span class="pinned-chip" style="background:var(--teal);color:white;">🌱 ${when}</span>
+      ${newOnes.length > 1 ? `<button class="btn-next-spotlight" onclick="nextNewJoiner()">Next →</button>` : ''}
+    </div>`;
+}
+
+function nextNewJoiner(){
+  const cutoff = Date.now() - 30*86400000;
+  const count = S.people.filter(p=> Number(p.added) > cutoff).length;
+  newJoinerIdx = (newJoinerIdx + 1) % count;
+  renderNewJoiners();
+}
+
+// ─────────────────────────────────────
+//  MARKET PAGES
+// ─────────────────────────────────────
+function renderAllMarketPages(){
+  const container = document.getElementById('market-pages');
+  container.innerHTML = '';
+  S.markets.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'page';
+    div.id = 'page-mkt-' + m.id;
+    div.innerHTML = buildMarketPageHTML(m, '');
+    container.appendChild(div);
+  });
+}
+
+function renderMarketPage(marketId){
+  const m = S.markets.find(x=>x.id===marketId);
+  if(!m) return;
+  let div = document.getElementById('page-mkt-' + marketId);
+  if(!div){
+    div = document.createElement('div');
+    div.className = 'page';
+    div.id = 'page-mkt-' + marketId;
+    document.getElementById('market-pages').appendChild(div);
+  }
+  div.innerHTML = buildMarketPageHTML(m, '');
+  div.classList.add('active');
+}
+
+function buildMarketPageHTML(m, searchTerm){
+  const people = S.people.filter(p=>p.mkt===m.id);
+  const filtered = searchTerm
+    ? people.filter(p=>(p.fn+' '+p.ln+' '+p.jt).toLowerCase().includes(searchTerm.toLowerCase()))
+    : people;
+
+  const tiers=[{k:'head',l:'Head Veterinarian'},{k:'vet',l:'Veterinarian'}];
+  let cardsHtml=''; let first=true;
+  tiers.forEach(t=>{
+    const members=filtered.filter(p=>p.tier===t.k);
+    if(!members.length) return;
+    const label = members.length === 1 ? t.l : t.l + 's';
+    if(!first) cardsHtml+='<div class="tier-connector"><div class="tier-connector-line"></div></div>';
+    first=false;
+    cardsHtml+=`<div class="tier ${t.k}-tier">
+      <div class="tier-header"><span class="tier-badge ${t.k}">${label}</span><div class="tier-line"></div></div>
+      <div class="cards-grid">${members.map(p=>buildCard(p,m)).join('')}</div>
+    </div>`;
+  });
+  if(!cardsHtml) cardsHtml=`<div class="empty-state"><div class="icon">🐾</div><p>${searchTerm ? 'No results for "'+searchTerm+'"' : 'No team members yet.'}</p></div>`;
+
+  const total = people.length;
+  return `<div class="dir-wrap">
+    <div class="market-header">
+      <div class="market-header-left">
+        <div class="team-count">${m.flag} ${m.name} · ${total} member${total!==1?'s':''}</div>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" type="text" placeholder="Search…"
+          id="search-${m.id}" value="${searchTerm}"
+          oninput="onSearch('${m.id}', this.value)"
+          onkeydown="if(event.key==='Escape'){this.value='';onSearch('${m.id}','');}">
+        <button class="search-clear ${searchTerm?'visible':''}" onclick="document.getElementById('search-${m.id}').value='';onSearch('${m.id}','')">✕</button>
+      </div>
+    </div>
+    ${cardsHtml}
+  </div>`;
+}
+
+function onSearch(marketId, term){
+  const m = S.markets.find(x=>x.id===marketId);
+  if(!m) return;
+  const div = document.getElementById('page-mkt-' + marketId);
+  if(div) div.innerHTML = buildMarketPageHTML(m, term);
+  // Keep focus in search input after re-render
+  const input = document.getElementById('search-' + marketId);
+  if(input){ input.focus(); input.setSelectionRange(term.length, term.length); }
+}
+
+// Legacy renderOrg kept for admin panel close callback
+function renderOrg(){ renderAllMarketPages(); buildNav(); }
+
+function buildCard(p,m){
+  const av=p.av?`<img src="${p.av}" alt="">`:(p.fn[0]+p.ln[0]);
+  const isNew=Date.now()-Number(p.added)<30*86400000;
+  return `<div class="card-wrap ${p.tier}-tier" onclick="this.classList.toggle('flipped')">
+    ${isNew?'<div class="new-joiner-card-badge">NEW</div>':''}
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="card-avatar">${av}</div>
+        <div class="card-name">${p.fn} ${p.ln}</div>
+        <div class="card-title">${p.jt}</div>
+        <div class="card-market-tag">${m.flag} ${m.name}</div>
+        <div class="card-hint">Tap to learn more</div>
+      </div>
+      <div class="card-back">
+        <div class="back-name">${p.fn} ${p.ln}</div>
+        <div class="back-title">${p.jt}</div>
+        <div class="back-desc">${p.desc||'No description added yet.'}</div>
+        <div class="back-market">${m.flag} ${m.name}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ─────────────────────────────────────
+//  AUTH
+// ─────────────────────────────────────
+function handleAdminBtn(){ session?openAdmin():openLogin(); }
+function openLogin(){
+  document.getElementById('login-error').textContent='';
+  document.getElementById('li-username').value='';
+  document.getElementById('li-password').value='';
+  document.getElementById('login-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('li-username').focus(),100);
+}
+function closeLogin(){ document.getElementById('login-overlay').classList.remove('open'); }
+function attemptLogin(){
+  const u=document.getElementById('li-username').value.trim();
+  const p=document.getElementById('li-password').value;
+  if(u===SUPER_USER&&p===SUPER_PASS){ session={role:'super',name:'Super Admin',markets:S.markets.map(m=>m.id)}; closeLogin();updateHeader();openAdmin();return; }
+  const adm=S.admins.find(a=>a.username===u&&a.password===p);
+  if(adm){ session={role:'market',adminId:adm.id,name:adm.name||adm.username,markets:adm.markets||[]}; closeLogin();updateHeader();openAdmin();return; }
+  document.getElementById('login-error').textContent='Incorrect username or password.';
+  document.getElementById('li-password').value='';
+}
+function doLogout(){ session=null;updateHeader();renderHome(); }
+function updateHeader(){
+  const badge=document.getElementById('logged-in-badge');
+  const lb=document.getElementById('logout-btn');
+  const ab=document.getElementById('admin-btn');
+  if(session){
+    badge.style.display='flex'; lb.style.display='flex';
+    document.getElementById('li-name').textContent=session.name;
+    const chip=document.getElementById('li-chip');
+    chip.textContent=session.role==='super'?'Super Admin':'Market Admin';
+    chip.className='role-chip '+(session.role==='super'?'super':'market');
+    ab.textContent='⚙️ Panel';
+  } else {
+    badge.style.display='none'; lb.style.display='none'; ab.textContent='⚙️ Admin';
+  }
+}
+
+// ─────────────────────────────────────
+//  ADMIN PANEL
+// ─────────────────────────────────────
+function openAdmin(){ if(!session) return; renderAdmin(); document.getElementById('admin-overlay').classList.add('open'); }
+function closeAdmin(){ document.getElementById('admin-overlay').classList.remove('open'); buildNav(); renderAllMarketPages(); renderHome(); }
+
+function renderAdmin(){
+  const isSuper=session.role==='super';
+  document.getElementById('ap-title').textContent=isSuper?'⚙️ Super Admin Panel':'⚙️ Market Admin Panel';
+  document.getElementById('ap-sub').textContent=isSuper?'Full access — markets, admins & spotlight':'Manage your assigned market(s)';
+  document.getElementById('ap-badge').innerHTML=isSuper?'<span class="super-badge">⭐ Super Admin</span>':'<span class="market-badge-pill">Market Admin</span>';
+  const allowed=isSuper?S.markets:S.markets.filter(m=>session.markets.includes(m.id));
+  if(!activeAdminTab||(!allowed.find(m=>m.id===activeAdminTab)&&!['admins','markets','spotlight'].includes(activeAdminTab)))
+    activeAdminTab=allowed[0]?.id||(isSuper?'spotlight':null);
+  const tabsEl=document.getElementById('admin-tabs');
+  tabsEl.innerHTML='';
+  allowed.forEach(m=>{
+    const t=document.createElement('button');
+    t.className='admin-tab'+(activeAdminTab===m.id?' active':'');
+    t.textContent=m.flag+' '+m.name;
+    t.onclick=()=>{activeAdminTab=m.id;renderAdmin();};
+    tabsEl.appendChild(t);
+  });
+  if(isSuper){
+    [['spotlight','⭐ Spotlight'],['admins','👥 Admins'],['markets','🌍 Markets']].forEach(([k,l])=>{
+      const t=document.createElement('button');
+      t.className='admin-tab'+(activeAdminTab===k?' active':'');
+      t.textContent=l;
+      t.onclick=()=>{activeAdminTab=k;renderAdmin();};
+      tabsEl.appendChild(t);
+    });
+  }
+  const content=document.getElementById('admin-content');
+  if(activeAdminTab==='spotlight') content.innerHTML=buildSpotlightPanel();
+  else if(activeAdminTab==='admins') content.innerHTML=buildAdminsPanel();
+  else if(activeAdminTab==='markets') content.innerHTML=buildMarketsPanel();
+  else{ const mkt=S.markets.find(m=>m.id===activeAdminTab); content.innerHTML=mkt?buildMarketContent(mkt):''; }
+}
+
+// Spotlight admin panel
+function buildSpotlightPanel(){
+  const pinned = S.pinnedSpotlight ? S.people.find(p=>p.id===S.pinnedSpotlight) : null;
+  const peopleOpts = S.people.map(p=>`<option value="${p.id}" ${S.pinnedSpotlight===p.id?'selected':''}>${p.fn} ${p.ln} · ${S.markets.find(m=>m.id===p.mkt)?.name||''}</option>`).join('');
+  return `
+    <div class="section-title">⭐ Spotlight Control</div>
+    <div class="inline-form">
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;line-height:1.6">
+        By default, the spotlight rotates automatically through all team members. Pin a specific person to keep them featured — useful for welcoming a new team member.
+      </p>
+      <div class="form-field" style="margin-bottom:14px">
+        <label>Pinned Spotlight Person</label>
+        <select id="pin-select">
+          <option value="">— Auto-rotate (no pin) —</option>
+          ${peopleOpts}
+        </select>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save" onclick="saveSpotlightPin()">📌 Save Pin</button>
+      </div>
+    </div>
+    ${pinned?`<div class="info-box" style="margin-top:14px">📌 Currently pinned: <strong>${pinned.fn} ${pinned.ln}</strong>. Visitors will always see this person in the spotlight until unpinned.</div>`:'<div class="info-box" style="margin-top:14px">🔄 Spotlight is currently auto-rotating through all team members with descriptions.</div>'}
+  `;
+}
+
+function saveSpotlightPin(){
+  const val=document.getElementById('pin-select').value;
+  S.pinnedSpotlight=val||null;
+  save(); renderAdmin();
+}
+
+// Market content
+function buildMarketContent(m){
+  const people=S.people.filter(p=>p.mkt===m.id);
+  const tiers=[{k:'head',l:'Head Veterinarians'},{k:'vet',l:'Veterinarians'}];
+  let html='';
+  tiers.forEach(t=>{
+    const members=people.filter(p=>p.tier===t.k);
+    html+=`<div class="section-title"><span class="s-badge ${t.k}">${t.l}</span></div>
+    <div class="person-list">
+    ${members.length?members.map(p=>`
+      <div class="row-card">
+        <div class="row-avatar">${p.av?`<img src="${p.av}" alt="">`:(p.fn[0]+p.ln[0])}</div>
+        <div class="row-info">
+          <div class="row-name">${p.fn} ${p.ln}${Date.now()-p.added<30*86400000?' <span style="background:var(--teal);color:white;font-size:0.68rem;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:4px">NEW</span>':''}</div>
+          <div class="row-meta">${p.jt}${p.av?' · 📷':''}</div>
+        </div>
+        <div class="row-actions">
+          <button class="btn-edit" onclick="openPF('${p.id}')">✏️ Edit</button>
+          <button class="btn-delete" onclick="delPerson('${p.id}')">🗑</button>
+        </div>
+      </div>`).join(''):`<div style="color:var(--text-light);font-size:0.82rem;padding:4px 2px;opacity:0.7">None yet.</div>`}
+    </div>`;
+  });
+  html+=`<div style="margin-top:6px"><button class="btn-add" onclick="openPF(null,'${m.id}')">+ Add Member to ${m.name}</button></div>`;
+  return html;
+}
+
+// Admins panel
+function buildAdminsPanel(){
+  const rows=S.admins.map(a=>`
+    <div class="row-card">
+      <div class="row-icon">👤</div>
+      <div class="row-info">
+        <div class="row-name">${a.name||a.username} <span style="color:var(--text-light);font-weight:400">@${a.username}</span></div>
+        <div class="row-meta">${(a.markets||[]).map(id=>{const m=S.markets.find(x=>x.id===id);return m?m.flag+' '+m.name:id;}).join(', ')||'No markets assigned'}</div>
+      </div>
+      <div class="row-actions">
+        <button class="btn-edit" onclick="openAdminForm('${a.id}')">✏️ Edit</button>
+        <button class="btn-delete" onclick="delAdmin('${a.id}')">🗑</button>
+      </div>
+    </div>`).join('')||'<div style="color:var(--text-light);font-size:0.82rem;padding:4px">No market admins yet.</div>';
+  return `<div class="section-title">👥 Market Admins</div><div class="manager-list">${rows}</div>
+    <div id="admin-form-slot"></div>
+    <button class="btn-add" onclick="openAdminForm(null)">+ Add Market Admin</button>
+    <div class="gold-box" style="margin-top:14px">⭐ <strong>Super Admin credentials</strong> are set in the code. Search for <code>SUPER_USER</code> / <code>SUPER_PASS</code> to update them.</div>`;
+}
+
+function openAdminForm(id){ document.getElementById('admin-form-slot').innerHTML=buildAdminForm(id); }
+function buildAdminForm(id){
+  const a=id?S.admins.find(x=>x.id===id):null;
+  const checkboxes=S.markets.map(m=>`<label style="display:flex;align-items:center;gap:7px;font-size:0.84rem;margin-bottom:6px;cursor:pointer"><input type="checkbox" value="${m.id}" ${a&&(a.markets||[]).includes(m.id)?'checked':''} style="accent-color:var(--blue);width:15px;height:15px"> ${m.flag} ${m.name}</label>`).join('');
+  return `<div class="inline-form" style="margin-top:14px"><input type="hidden" id="af-id" value="${id||''}">
+    <div class="form-grid">
+      <div class="form-field"><label>Display Name</label><input type="text" id="af-name" value="${a?a.name||'':''}" placeholder="Anna Svensson"></div>
+      <div class="form-field"><label>Username</label><input type="text" id="af-user" value="${a?a.username:''}" placeholder="anna.svensson"></div>
+      <div class="form-field full"><label>Password ${id?'(leave blank to keep)':'*'}</label><input type="password" id="af-pass" placeholder="••••••••"></div>
+      <div class="form-field full"><label>Assigned Markets</label><div style="background:var(--beige);border-radius:9px;padding:14px;columns:2;gap:8px">${checkboxes}</div></div>
+    </div>
+    <div class="form-actions"><button class="btn-cancel" onclick="document.getElementById('admin-form-slot').innerHTML=''">Cancel</button><button class="btn-save" onclick="saveAdmin()">💾 Save Admin</button></div>
+  </div>`;
+}
+function saveAdmin(){
+  const id=document.getElementById('af-id').value;
+  const name=document.getElementById('af-name').value.trim();
+  const username=document.getElementById('af-user').value.trim();
+  const password=document.getElementById('af-pass').value;
+  const markets=[...document.querySelectorAll('#admin-form-slot input[type=checkbox]:checked')].map(c=>c.value);
+  if(!username){alert('Username is required.');return;}
+  if(id){ const i=S.admins.findIndex(a=>a.id===id); S.admins[i]={...S.admins[i],name,username,markets}; if(password)S.admins[i].password=password; }
+  else{ if(!password){alert('Password is required.');return;} S.admins.push({id:'a'+Date.now(),name,username,password,markets}); }
+  save();renderAdmin();
+}
+function delAdmin(id){ const a=S.admins.find(x=>x.id===id); if(!confirm(`Remove admin "${a.name||a.username}"?`))return; S.admins=S.admins.filter(x=>x.id!==id);save();renderAdmin(); }
+
+// Markets panel
+function buildMarketsPanel(){
+  const rows=S.markets.map(m=>`
+    <div class="row-card">
+      <div class="row-icon">${m.flag}</div>
+      <div class="row-info"><div class="row-name">${m.name}</div><div class="row-meta">${S.people.filter(p=>p.mkt===m.id).length} member(s)</div></div>
+      <div class="row-actions"><button class="btn-delete" onclick="delMarket('${m.id}')">🗑 Remove</button></div>
+    </div>`).join('')||'<div style="color:var(--text-light);font-size:0.82rem;padding:4px">No markets yet.</div>';
+  return `<div class="section-title">🌍 Markets</div><div class="manager-list">${rows}</div>
+    <div class="input-row">
+      <input type="text" id="nm-name" placeholder="Market name">
+      <input type="text" id="nm-flag" placeholder="🇳🇱" style="max-width:58px;text-align:center">
+      <button class="btn-add" onclick="addMarket()">+ Add</button>
+    </div>
+    <div class="info-box">💡 Find flag emojis by searching "flag emoji [country name]".</div>`;
+}
+function addMarket(){ const name=document.getElementById('nm-name').value.trim(); const flag=document.getElementById('nm-flag').value.trim()||'🌍'; if(!name)return; S.markets.push({id:'m'+Date.now(),name,flag});save();renderAdmin(); }
+function delMarket(id){ const m=S.markets.find(x=>x.id===id); const c=S.people.filter(p=>p.mkt===id).length; if(!confirm(`Remove ${m.name}? Also removes ${c} member(s).`))return; S.markets=S.markets.filter(x=>x.id!==id);S.people=S.people.filter(p=>p.mkt!==id);save();renderAdmin(); }
+
+// ─────────────────────────────────────
+//  PERSON FORM
+// ─────────────────────────────────────
+function openPF(personId,defaultMkt){
+  editingId=personId; pfAvatar=null;
+  const allowed=session.role==='super'?S.markets:S.markets.filter(m=>session.markets.includes(m.id));
+  document.getElementById('pf-mkt').innerHTML=allowed.map(m=>`<option value="${m.id}">${m.flag} ${m.name}</option>`).join('');
+  if(personId){
+    const p=S.people.find(x=>x.id===personId);
+    document.getElementById('pf-title').textContent='✏️ Edit Team Member';
+    document.getElementById('pf-sub').textContent=p.fn+' '+p.ln;
+    document.getElementById('pf-fn').value=p.fn; document.getElementById('pf-ln').value=p.ln;
+    document.getElementById('pf-jt').value=p.jt; document.getElementById('pf-tier').value=p.tier;
+    document.getElementById('pf-mkt').value=p.mkt; document.getElementById('pf-desc').value=p.desc||'';
+    setPhotoPreview(p.av,p.fn[0]+p.ln[0]);
+    if(p.av){pfAvatar=p.av;document.getElementById('btn-remove-photo').style.display='inline-flex';}
+    else document.getElementById('btn-remove-photo').style.display='none';
+  } else {
+    document.getElementById('pf-title').textContent='➕ Add Team Member';
+    document.getElementById('pf-sub').textContent='Fill in the details';
+    ['pf-fn','pf-ln','pf-jt','pf-desc'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('pf-tier').value='vet';
+    document.getElementById('pf-mkt').value=defaultMkt||allowed[0]?.id||'';
+    setPhotoPreview(null,''); document.getElementById('btn-remove-photo').style.display='none';
+  }
+  document.getElementById('pf-overlay').classList.add('open');
+}
+function closePF(){ document.getElementById('pf-overlay').classList.remove('open'); }
+function setPhotoPreview(src,initials){
+  const el=document.getElementById('pf-photo-preview');
+  const init=document.getElementById('pf-initials');
+  const old=el.querySelector('img'); if(old)old.remove();
+  if(src){ const img=document.createElement('img');img.src=src;el.insertBefore(img,el.querySelector('.cam-overlay'));init.style.display='none'; }
+  else{ init.style.display='block';init.textContent=initials||'🧑‍⚕️'; }
+}
+function removePhoto(){ pfAvatar=null; pfAvatarIsNew=false; setPhotoPreview(null,'');document.getElementById('btn-remove-photo').style.display='none';document.getElementById('pf-file').value=''; }
+async function savePerson(){
+  const fn=document.getElementById('pf-fn').value.trim();
+  const ln=document.getElementById('pf-ln').value.trim();
+  if(!fn||!ln){alert('First and last name are required.');return;}
+
+  const personId = editingId || 'p'+Date.now();
+  const obj={
+    id: personId, fn, ln,
+    jt: document.getElementById('pf-jt').value.trim()||'Veterinarian',
+    tier: document.getElementById('pf-tier').value,
+    mkt: document.getElementById('pf-mkt').value,
+    desc: document.getElementById('pf-desc').value.trim(),
+    av: pfAvatar||null,
+    added: editingId?(S.people.find(p=>p.id===editingId)?.added||Date.now()):Date.now()
+  };
+
+  // 1. Always save locally and render immediately
+  if(editingId){const i=S.people.findIndex(p=>p.id===editingId);S.people[i]=obj;}
+  else S.people.push(obj);
+  localStorage.setItem('agria_v6', JSON.stringify(S));
+  closePF();
+  renderAdmin();
+
+  const hasNewPhoto = pfAvatar && pfAvatarIsNew;
+  const savedAvatar = pfAvatar;
+  pfAvatarIsNew = false;
+
+  if(hasNewPhoto){
+    // Step 1 — save person WITHOUT photo first so they always appear in sheet
+    showSyncStatus('💾 Saving member…');
+    const objNoPhoto = { ...obj, av: '' };
+    const stateNoPhoto = {
+      ...S,
+      people: S.people.map(p => p.id === personId ? objNoPhoto : p)
+    };
+    try {
+      const r1 = await gsWrite({ action: 'saveData', data: stateNoPhoto });
+      if(r1 && r1.ok){
+        showSyncStatus('📷 Uploading photo…');
+        // Step 2 — upload photo, Apps Script updates the av cell directly
+        try {
+          const r2 = await gsPhotoUpload(personId, savedAvatar);
+          if(r2 && r2.url){
+            // Update local state with Drive URL
+            const idx = S.people.findIndex(p => p.id === personId);
+            if(idx !== -1) S.people[idx].av = r2.url;
+            localStorage.setItem('agria_v6', JSON.stringify(S));
+          }
+          showSyncStatus('✓ Saved & photo synced');
+        } catch(photoErr){
+          console.warn('Photo upload failed:', photoErr);
+          showSyncStatus('✓ Saved — photo upload failed, try editing to re-upload', true);
+        }
+        localStorage.setItem('agria_last_fetch', Date.now().toString());
+        renderAdmin();
+        renderHome();      } else {
+        throw new Error(r1 ? r1.error : 'Save returned no ok');
+      }
+    } catch(e){
+      console.warn('Save with photo failed:', e);
+      showSyncStatus('⚠️ Saved locally only — sync failed', true);
+    }
+  } else {
+    save();
+  }
+}
+function delPerson(id){ const p=S.people.find(x=>x.id===id); if(!confirm(`Remove ${p.fn} ${p.ln}?`))return; S.people=S.people.filter(x=>x.id!==id); if(S.pinnedSpotlight===id)S.pinnedSpotlight=null; save();renderAdmin(); }
+
+// ─────────────────────────────────────
+//  PHOTO CROP
+// ─────────────────────────────────────
+let cropImg=new Image(),cropX=0,cropY=0,cropScale=1;
+let dragging=false,dsx=0,dsy=0,dix=0,diy=0,rawSrc='';
+function handlePhotoSelect(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  if(file.size > 15*1024*1024){ alert('Photo must be under 15 MB.'); return; }
+  const r=new FileReader();
+  r.onload=ev=>{ rawSrc=ev.target.result; startCrop(rawSrc); };
+  r.readAsDataURL(file);
+  e.target.value='';
+}
+function startCrop(src){ cropImg=new Image();cropImg.onload=()=>{ const ms=Math.max(240/cropImg.width,240/cropImg.height);cropScale=ms;document.getElementById('crop-zoom').min=ms;document.getElementById('crop-zoom').max=ms*4;document.getElementById('crop-zoom').value=ms;cropX=(240-cropImg.width*ms)/2;cropY=(240-cropImg.height*ms)/2;drawCrop();document.getElementById('crop-overlay').classList.add('open'); };cropImg.src=src; }
+function drawCrop(){ cropScale=parseFloat(document.getElementById('crop-zoom').value);const ctx=document.getElementById('crop-canvas').getContext('2d');ctx.clearRect(0,0,240,240);ctx.drawImage(cropImg,cropX,cropY,cropImg.width*cropScale,cropImg.height*cropScale); }
+function cancelCrop(){ document.getElementById('crop-overlay').classList.remove('open'); }
+function confirmCrop(){
+  const out=document.createElement('canvas');
+  out.width=300; out.height=300;
+  const ctx=out.getContext('2d');
+  ctx.beginPath();ctx.arc(150,150,150,0,Math.PI*2);ctx.clip();
+  const r=300/240;
+  ctx.drawImage(cropImg,cropX*r,cropY*r,cropImg.width*cropScale*r,cropImg.height*cropScale*r);
+  // Store as base64 temporarily — will be uploaded to Drive on save
+  pfAvatar=out.toDataURL('image/jpeg',0.85);
+  pfAvatarIsNew=true; // flag so we know to upload it
+  setPhotoPreview(pfAvatar,'');
+  document.getElementById('btn-remove-photo').style.display='inline-flex';
+  document.getElementById('crop-overlay').classList.remove('open');
+}
+const cw=document.getElementById('crop-wrapper');
+cw.addEventListener('mousedown',e=>{dragging=true;dsx=e.clientX;dsy=e.clientY;dix=cropX;diy=cropY;e.preventDefault();});
+document.addEventListener('mousemove',e=>{if(!dragging)return;cropX=dix+(e.clientX-dsx);cropY=diy+(e.clientY-dsy);drawCrop();});
+document.addEventListener('mouseup',()=>dragging=false);
+cw.addEventListener('touchstart',e=>{const t=e.touches[0];dragging=true;dsx=t.clientX;dsy=t.clientY;dix=cropX;diy=cropY;},{passive:true});
+document.addEventListener('touchmove',e=>{if(!dragging)return;const t=e.touches[0];cropX=dix+(t.clientX-dsx);cropY=diy+(t.clientY-dsy);drawCrop();},{passive:true});
+document.addEventListener('touchend',()=>dragging=false);
+
+// ─────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────
+async function init(){
+  updateHeader();
+  buildNav();
+  renderAllMarketPages();
+  renderHome();
+  await loadFromSheets();
+  buildNav();
+  renderAllMarketPages();
+  renderHome();
+}
+init();
+</script>
+</body>
+</html>
